@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { View, Text } from "react-native";
 import { useState } from "react/cjs/react.development";
-import { tvApi } from "../api";
+import { tvApi } from "../../api";
+import TVPresenter from "./TVPresenter";
 
 const TV = () => {
   const [tvs, setTvs] = useState({
@@ -16,9 +16,9 @@ const TV = () => {
   });
   const getData = async () => {
     const [today, todayError] = await tvApi.today();
-    const [thisWeek, thisWeekError] = await tvApi.thisWeek();
     const [topRated, topRatedError] = await tvApi.topRated();
     const [popular, popularError] = await tvApi.popular();
+    const [thisWeek, thisWeekError] = await tvApi.thisWeek();
     setTvs({
       today,
       thisWeek,
@@ -33,11 +33,8 @@ const TV = () => {
   useEffect(() => {
     getData();
   }, []);
-  return (
-    <View>
-      <Text>{tvs.today?.length}</Text>
-    </View>
-  );
+  console.log(tvs.today);
+  return <TVPresenter {...tvs} />;
 };
 
 export default TV;

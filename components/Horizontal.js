@@ -2,10 +2,8 @@ import React from "react";
 import styled from "styled-components/native";
 import PropTypes from "prop-types";
 import Poster from "./Poster";
-import { apiImage } from "../api";
-import Votes from "./Votes";
 import { formatDate, trimText } from "../utils";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, Text } from "react-native";
 
 const Container = styled.View`
   padding: 0px 30px;
@@ -46,7 +44,7 @@ const Horizontal = ({ id, title, poster, overview, releaseDate }) => {
           {releaseDate ? (
             <ReleaseDate>개봉 예정일: {formatDate(releaseDate)}</ReleaseDate>
           ) : (
-            "개봉일미정"
+            <Text>"개봉일미정"</Text>
           )}
           <Overview>{trimText(overview, 80)}</Overview>
         </Data>
