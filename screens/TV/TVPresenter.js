@@ -1,11 +1,20 @@
 import React from "react";
+import { Dimensions } from "react-native";
 import styled from "styled-components/native";
+import Swiper from "react-native-web-swiper";
+import Slide from "../../components/Movies/Slide";
 import PropTypes from "prop-types";
 import ScrollContainer from "../ScrollContainer";
 import HorizontalSlider from "../../components/HorizontalSlider";
 import Vertical from "../../components/Vertical";
-import List from "../../components/List";
-import Horizontal from "../../components/Horizontal";
+
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
+
+const SliderContainer = styled.View`
+  width: 100%;
+  height: ${HEIGHT / 4}px;
+  margin-bottom: 30px;
+`;
 
 const Container = styled.View`
   margin-top: 30px;
@@ -14,18 +23,22 @@ const Container = styled.View`
 const TVPresenter = ({ loading, popular, topRated, today }) => {
   return (
     <ScrollContainer loading={loading}>
-      <Container>
-        <HorizontalSlider title="인기 드라마">
+      <SliderContainer>
+        <Swiper controlsEnabled={false} loop timeout={3}>
           {popular.map((show) => (
-            <Vertical
-              id={show.id}
+            <Slide
               key={show.id}
-              poster={show.poster_path}
+              id={show.id}
               title={show.name}
               votes={show.vote_average}
+              backgroundImage={show.backdrop_path}
+              poster={show.poster_path}
+              overview={show.overview}
             />
           ))}
-        </HorizontalSlider>
+        </Swiper>
+      </SliderContainer>
+      <Container>
         <HorizontalSlider title="최고 평점 드라마">
           {topRated.map((show) => (
             <Vertical
@@ -37,17 +50,17 @@ const TVPresenter = ({ loading, popular, topRated, today }) => {
             />
           ))}
         </HorizontalSlider>
-        <List title="오늘 방영 드라마">
+        <HorizontalSlider title="오늘 방영 드라마">
           {today.map((show) => (
-            <Horizontal
-              key={show.id}
+            <Vertical
               id={show.id}
-              title={show.name}
+              key={show.id}
               poster={show.poster_path}
-              overview={show.overview}
+              title={show.name}
+              votes={show.vote_average}
             />
           ))}
-        </List>
+        </HorizontalSlider>
       </Container>
     </ScrollContainer>
   );

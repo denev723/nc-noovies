@@ -23,7 +23,7 @@ const Vertical = ({ id, poster, title, votes }) => {
       <Container>
         <Poster url={poster} />
         <Title>{trimText(title, 8)}</Title>
-        <Votes votes={votes} />
+        {votes > 0 && <Votes votes={votes} />}
       </Container>
     </TouchableOpacity>
   );

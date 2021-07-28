@@ -5,6 +5,7 @@ import TVPresenter from "./TVPresenter";
 
 const TV = () => {
   const [tvs, setTvs] = useState({
+    loading: true,
     today: [],
     todayError: null,
     thisWeek: [],
@@ -20,6 +21,7 @@ const TV = () => {
     const [popular, popularError] = await tvApi.popular();
     const [thisWeek, thisWeekError] = await tvApi.thisWeek();
     setTvs({
+      loading: false,
       today,
       thisWeek,
       topRated,
@@ -33,7 +35,7 @@ const TV = () => {
   useEffect(() => {
     getData();
   }, []);
-  console.log(tvs.today);
+  console.log(tvs.popular);
   return <TVPresenter {...tvs} />;
 };
 
