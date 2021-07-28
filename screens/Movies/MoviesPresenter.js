@@ -5,7 +5,7 @@ import { Dimensions } from "react-native";
 import Slide from "../../components/Movies/Slide";
 import Vertical from "../../components/Vertical";
 import Horizontal from "../../components/Horizontal";
-import ScrollContainer from "../ScrollContainer";
+import ScrollContainer from "../../components/ScrollContainer";
 import HorizontalSlider from "../../components/HorizontalSlider";
 import List from "../../components/List";
 
@@ -19,9 +19,9 @@ const SliderContainer = styled.View`
 
 const Container = styled.View``;
 
-export default ({ loading, nowPlaying, popular, upcoming }) => {
+export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => {
   return (
-    <ScrollContainer loading={loading}>
+    <ScrollContainer refreshFn={refreshFn} loading={loading}>
       <>
         <SliderContainer>
           <Swiper controlsEnabled={false} loop timeout={3}>

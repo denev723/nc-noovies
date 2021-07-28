@@ -1,16 +1,15 @@
 import React from "react";
-import styled from "styled-components/native";
 import Input from "../../components/Search/Input";
 import HorizontalSlider from "../../components/HorizontalSlider";
 import Vertical from "../../components/Vertical";
-
-const Container = styled.ScrollView`
-  background-color: black;
-`;
+import ScrollContainer from "../../components/ScrollContainer";
 
 const SearchPresenter = ({ movies, shows, keyword, onSubmit, onChange }) => {
   return (
-    <Container>
+    <ScrollContainer
+      refreshFn={onSubmit}
+      loading={false}
+      contentContainerStyle={{ paddingTop: 10 }}>
       <Input
         placeholder={"검색어를 입력하세요.."}
         value={keyword}
@@ -43,7 +42,7 @@ const SearchPresenter = ({ movies, shows, keyword, onSubmit, onChange }) => {
           ))}
         </HorizontalSlider>
       )}
-    </Container>
+    </ScrollContainer>
   );
 };
 

@@ -13,6 +13,9 @@ const SearchContainer = () => {
   });
   const onChange = (text) => setKeyword(text);
   const search = async () => {
+    if (keyword === "") {
+      return;
+    }
     const [movies, movieError] = await movieApi.search(keyword);
     const [shows, showError] = await tvApi.search(keyword);
     setResults({

@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 import Swiper from "react-native-web-swiper";
 import Slide from "../../components/Movies/Slide";
 import PropTypes from "prop-types";
-import ScrollContainer from "../ScrollContainer";
+import ScrollContainer from "../../components/ScrollContainer";
 import HorizontalSlider from "../../components/HorizontalSlider";
 import Vertical from "../../components/Vertical";
 
@@ -20,9 +20,9 @@ const Container = styled.View`
   margin-top: 30px;
 `;
 
-const TVPresenter = ({ loading, popular, topRated, today }) => {
+const TVPresenter = ({ refreshFn, loading, popular, topRated, today }) => {
   return (
-    <ScrollContainer loading={loading}>
+    <ScrollContainer refreshFn={refreshFn} loading={loading}>
       <SliderContainer>
         <Swiper controlsEnabled={false} loop timeout={3}>
           {popular.map((show) => (

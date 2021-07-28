@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const TextInput = styled.TextInput`
   background-color: white;
-  margin: 10px 40px 20px 40px;
+  margin: 10px 40px 50px 40px;
   padding: 10px 10px;
   border-radius: 50px;
 `;

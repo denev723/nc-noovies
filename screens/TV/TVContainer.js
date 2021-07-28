@@ -36,7 +36,7 @@ const TV = () => {
     getData();
   }, []);
   console.log(tvs.popular);
-  return <TVPresenter {...tvs} />;
+  return <TVPresenter refreshFn={getData} {...tvs} />;
 };
 
 export default TV;

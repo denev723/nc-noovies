@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes, { string } from "prop-types";
+import PropTypes from "prop-types";
 import styled from "styled-components/native";
 import { apiImage } from "../api";
 
@@ -10,15 +10,14 @@ const Image = styled.Image`
 `;
 
 const Poster = ({ url }) => {
-  if (url) {
+  if (url !== null) {
     return <Image source={{ url: apiImage(url) }} />;
-  } else {
-    return <Image source={require("../assets/noPosterSmall.png")} />;
   }
+  return <Image source={require("../assets/noPosterSmall.png")} />;
 };
 
 Poster.propTypes = {
-  url: PropTypes.func | string | null,
+  url: PropTypes.string || null,
 };
 
 export default Poster;
