@@ -6,6 +6,7 @@ import { apiImage } from "../../api";
 import Poster from "../Poster";
 import Votes from "../Votes";
 import { trimText } from "../../utils";
+import { useNavigation } from "@react-navigation/native";
 
 const Container = styled.View`
   height: 100%;
@@ -57,7 +58,27 @@ const Button = styled.View`
 
 const ButtonText = styled.Text``;
 
-const Slide = ({ id, title, backgroundImage, votes, overview, poster }) => {
+const Slide = ({
+  isTv = false,
+  id,
+  title,
+  backgroundImage,
+  votes,
+  overview,
+  poster,
+}) => {
+  const navigation = useNavigation();
+  const goToDetail = () => {
+    navigation.navigate("Detail", {
+      id,
+      title,
+      backgroundImage,
+      votes,
+      overview,
+      poster,
+      isTv,
+    });
+  };
   return (
     <Container>
       <BG source={{ uri: apiImage(backgroundImage) }} />
@@ -71,7 +92,7 @@ const Slide = ({ id, title, backgroundImage, votes, overview, poster }) => {
           <Overview>
             {overview ? trimText(overview, 70) : "줄거리가 없습니다."}
           </Overview>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={goToDetail}>
             <Button>
               <ButtonText>자세히 보기..</ButtonText>
             </Button>

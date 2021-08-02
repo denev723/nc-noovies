@@ -47,6 +47,7 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => {
                 poster={movie.poster_path}
                 votes={movie.vote_average}
                 title={movie.title}
+                backgroundImage={movie.backdrop_path}
               />
             ))}
           </HorizontalSlider>
@@ -59,6 +60,7 @@ export default ({ refreshFn, loading, nowPlaying, popular, upcoming }) => {
                 releaseDate={movie.release_date}
                 poster={movie.poster_path}
                 overview={movie.overview}
+                backgroundImage={movie.backdrop_path}
               />
             ))}
           </List>

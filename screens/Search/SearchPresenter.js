@@ -25,6 +25,7 @@ const SearchPresenter = ({ movies, shows, keyword, onSubmit, onChange }) => {
               title={movie.title}
               poster={movie.poster_path}
               votes={movie.vote_average}
+              backgroundImage={movie.backdrop_path}
             />
           ))}
         </HorizontalSlider>
@@ -38,6 +39,7 @@ const SearchPresenter = ({ movies, shows, keyword, onSubmit, onChange }) => {
               title={show.name}
               poster={show.poster_path}
               votes={show.vote_average}
+              backgroundImage={movie.backdrop_path}
             />
           ))}
         </HorizontalSlider>
