@@ -16,7 +16,7 @@ const SearchPresenter = ({ movies, shows, keyword, onSubmit, onChange }) => {
         onChange={onChange}
         onSubmit={onSubmit}
       />
-      {movies.length !== 0 && (
+      {movies.length !== 0 ? (
         <HorizontalSlider title={"영화 검색 결과"}>
           {movies.map((movie) => (
             <Vertical
@@ -29,17 +29,18 @@ const SearchPresenter = ({ movies, shows, keyword, onSubmit, onChange }) => {
             />
           ))}
         </HorizontalSlider>
-      )}
+      ) : null}
       {shows.length !== 0 && (
         <HorizontalSlider title={"드라마 검색 결과"}>
           {shows.map((show) => (
             <Vertical
+              isTv={true}
               key={show.id}
               id={show.id}
               title={show.name}
               poster={show.poster_path}
               votes={show.vote_average}
-              backgroundImage={movie.backdrop_path}
+              backgroundImage={show.backdrop_path}
             />
           ))}
         </HorizontalSlider>
