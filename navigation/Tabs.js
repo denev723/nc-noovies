@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Movies from "../screens/Movies";
 import TV from "../screens/TV";
 import Search from "../screens/Search";
-import Discover from "../screens/Discover";
+import Favs from "../screens/Favs";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { Platform } from "react-native";
@@ -28,7 +28,7 @@ export default ({ navigation, route }) => {
             iconName += "tv";
           } else if (route.name === "Search") {
             iconName += "search";
-          } else if (route.name === "Discover") {
+          } else if (route.name === "Favs") {
             iconName += "heart";
           }
           return (
@@ -50,7 +50,7 @@ export default ({ navigation, route }) => {
       <Tabs.Screen name="Movies" component={Movies} />
       <Tabs.Screen name="TV" component={TV} />
       <Tabs.Screen name="Search" component={Search} />
-      <Tabs.Screen name="Discover" component={Discover} />
+      <Tabs.Screen name="Favs" component={Favs} />
     </Tabs.Navigator>
   );
 };
