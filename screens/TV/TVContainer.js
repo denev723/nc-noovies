@@ -35,7 +35,6 @@ const TV = () => {
   useEffect(() => {
     getData();
   }, []);
-  console.log(tvs.popular);
   return <TVPresenter refreshFn={getData} {...tvs} />;
 };
 
